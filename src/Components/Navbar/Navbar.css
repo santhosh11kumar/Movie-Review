@@ -1,0 +1,30 @@
+
+  .header {
+    margin: 0 2.5rem;
+    padding: .5rem 0;
+    align-items: center;
+    display: flex;
+    width: 100%;
+    justify-content:space-between;
+}
+
+.headerLeft, .headerRight {
+    display: flex;
+    align-items: center;
+
+}
+
+.nav_links{
+    margin: 0 30px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    color: white;
+}
+
+.nav_links:hover {
+    color: red;
+}
+
+.header__icon {
+    cursor: pointer;
+}
