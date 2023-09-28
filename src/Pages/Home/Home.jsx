@@ -1,19 +1,21 @@
 import { useCall } from "../../Hooks/useCall";
 import Movies from "../../Components/MovieList/Movies";
-import { Now_playing } from "../../Utils";
+import { Now_playing_URL } from "../../Utils";
+import Slides from "../../Components/SlideView/Slides";
+import "./Home.css"
 
 function Home() {
-    const now_playing = Now_playing;
-    const TheatereData = useCall(now_playing);
-    console.log(TheatereData)
+    const data = useCall(Now_playing_URL); // theatere data
 
     return (
         <>
-            {/* corusel */}
-            <div></div>
 
+            {/* corusel */}
+            <Slides></Slides>
+
+            <h2 className="list__title" style={{ paddingLeft: 40 }}>{("On Cinemas").toUpperCase()}</h2 >
             {/* Movies */}
-            <Movies TheatereData={TheatereData}></Movies>
+            <Movies Movies data={data} ></Movies>
         </>
     );
 }

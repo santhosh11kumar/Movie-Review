@@ -5,7 +5,7 @@ export const useCall = (Api) => {
     const [Data, setData] = useState([]);
     useEffect(() => {
         get_data();
-    }, [])
+    }, [Api]) // whenever api changes the call for data is made 
 
     async function get_data() {
         try {

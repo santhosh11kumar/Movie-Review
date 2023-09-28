@@ -1,7 +1,6 @@
 
   .header {
     margin: 0 2.5rem;
-    padding: .5rem 0;
     align-items: center;
     display: flex;
     width: 100%;
@@ -15,7 +14,7 @@
 }
 
 .nav_links{
-    margin: 0 30px;
+    margin: 0 40px;
     font-size: 1.3rem;
     cursor: pointer;
     color: white;
