@@ -3,5 +3,5 @@
     color: white;
     font-family: sans-serif;
     height: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
   }

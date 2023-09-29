@@ -8,7 +8,7 @@ function Home() {
     const data = useCall(Now_playing_URL); // theatere data
 
     return (
-        <>
+        <div className="Home_page">
 
             {/* corusel */}
             <Slides></Slides>
@@ -16,7 +16,7 @@ function Home() {
             <h2 className="list__title" style={{ paddingLeft: 40 }}>{("On Cinemas").toUpperCase()}</h2 >
             {/* Movies */}
             <Movies Movies data={data} ></Movies>
-        </>
+        </div>
     );
 }
 
