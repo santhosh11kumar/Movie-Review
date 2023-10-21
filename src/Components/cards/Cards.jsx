@@ -4,10 +4,12 @@ import "./cards.css";
 import React from 'react';
 import { FaStar } from 'react-icons/fa';
 
+
 function Cards({ data }) {
     let image = Image_URL + data.poster_path;
     const words = data.overview.split(' ');
     let description = words.slice(0, 30).join(' ')
+
 
 
     return (

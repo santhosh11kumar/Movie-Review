@@ -7,12 +7,12 @@ function MoviesCat() {
     const { type } = useParams()
     let url = API_URL + type + `?` + API_KEY;
 
-    let data = useCall(url);
+    let { Data, isLoading } = useCall(url);
 
     return (
         <>
             <h2 className="list__title" style={{ paddingLeft: 40 }}>{type.toUpperCase()}</h2 >
-            <Movies data={data}></Movies>
+            <Movies data={Data} isLoading={isLoading}></Movies>
         </>
     )
 }

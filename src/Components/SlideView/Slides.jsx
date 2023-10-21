@@ -6,10 +6,11 @@ import "./Slides.css";
 import { Image_URL } from "../../Utils";
 import { NavLink } from "react-router-dom";
 import { FaStar } from 'react-icons/fa';
+import Shimmer from "../Shimmer/Shimmer";
 
 
 function Slides() {
-    let PopularData = useCall(Popular_URL);
+    let { Data, isLoading } = useCall(Popular_URL);
     return (
         <>
             <div className="poster">
@@ -19,8 +20,9 @@ function Slides() {
                     infiniteLoop={true}
                     showStatus={false}
                     stopOnHover={true}
+                    showThumbs={false}
                 >
-                    {PopularData.map(data => (
+                    {isLoading ? <Shimmer></Shimmer> : Data.map(data => (
                         <NavLink key={data.id} to={`movieDetail/${data.id}`} style={{ textDecoration: "none", color: "white" }}>
                             <div >
                                 <div className="posterImage">
