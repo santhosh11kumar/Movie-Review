@@ -2,8 +2,9 @@ import { useParams } from "react-router-dom";
 import { API_KEY, API_URL } from "../../Utils";
 import { useCall } from "../../Hooks/useCall";
 import { Image_URL } from "../../Utils";
-
+import { Breathing } from 'react-shimmer'
 import "./MovieDet.css"
+
 function MovieDet() {
     const { id } = useParams();
     const url = API_URL + id + `?` + API_KEY;
@@ -17,20 +18,22 @@ function MovieDet() {
                 </div>
                 <div className="movie__detail">
                     <div className="movie__detailLeft">
-                        <div className="movie__posterBox">
-                            <img className="movie__poster" src={Image_URL + Data.poster_path + `?` + API_KEY} />
-                        </div>
+                        {isLoading ? < Breathing width={300} height={300} className="cards" /> :
+                            <div className="movie__posterBox">
+                                <img className="movie__poster" src={Image_URL + Data.poster_path + `?` + API_KEY} />
+                            </div>
+                        }
                     </div>
                     <div className="movie__detailRight">
                         <div className="movie__detailRightTop">
-                            <div className="movie__name">{Data.title}</div>
-                            <div className="movie__tagline">{Data.tagline}</div>
+                            <div className="movie__name">{Data ? Data.title : ""}</div>
+                            <div className="movie__tagline">{Data ? Data.tagline : ""}</div>
                             <div className="movie__rating">
-                                {Data.vote_average} <i class="fas fa-star" />
-                                <span className="movie__voteCount">{`(${Data.vote_count})`}votes</span>
+                                {Data ? Data.vote_average : ""} <i class="fas fa-star" />
+                                <span className="movie__voteCount">{Data ? `(${Data.vote_count}) votes` : ""}</span>
                             </div>
-                            <div className="movie__runtime">{Data.runtime} mins</div>
-                            <div className="movie__releaseDate">Release date {Data.release_date}</div>
+                            <div className="movie__runtime">{Data ? Data.runtime : ""} mins</div>
+                            <div className="movie__releaseDate">Release date {Data ? Data.release_date : ""}</div>
                             <div className="movie__genres">
                                 {
                                     Data.length != 0 && Data.genres.map((Genre) => (
