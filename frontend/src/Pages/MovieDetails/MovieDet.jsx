@@ -174,8 +174,30 @@ function formatDate(dateString) {
     const date = new Date(dateString);
     const now = new Date();
     const diffTime = Math.abs(now - date);
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    return `${diffDays} day${diffDays !== 1 ? 's' : ''} ago`;
-}
 
+    // Define time intervals in milliseconds
+    const minute = 60 * 1000;
+    const hour = minute * 60;
+    const day = hour * 24;
+    const month = day * 30; // Assuming 30 days per month approximation
+
+    // Calculate different time intervals
+    const diffMinutes = Math.floor(diffTime / minute);
+    const diffHours = Math.floor(diffTime / hour);
+    const diffDays = Math.floor(diffTime / day);
+    const diffMonths = Math.floor(diffTime / month);
+
+    // Format based on the interval
+    if (diffMonths > 0) {
+        return `${diffMonths} month${diffMonths !== 1 ? 's' : ''} ago`;
+    } else if (diffDays > 0) {
+        return `${diffDays} day${diffDays !== 1 ? 's' : ''} ago`;
+    } else if (diffHours > 0) {
+        return `${diffHours} hour${diffHours !== 1 ? 's' : ''} ago`;
+    } else if (diffMinutes > 0) {
+        return `${diffMinutes} minute${diffMinutes !== 1 ? 's' : ''} ago`;
+    } else {
+        return `Just now`;
+    }
+}
 export default MovieDet;
